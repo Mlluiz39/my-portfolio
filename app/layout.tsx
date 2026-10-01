@@ -3,7 +3,7 @@ import { Inter, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { MotionProvider } from '@/components/motion-provider'
-import { LocalBusinessJsonLd } from '@/components/json-ld'
+import { LocalBusinessJsonLd, WebSiteJsonLd, FAQPageJsonLd } from '@/components/json-ld'
 import './globals.css'
 
 const inter = Inter({ 
@@ -20,27 +20,78 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mlluizdevtech.com.br'),
-  title: 'mlluizdevtech | Software House com IA e Automação',
-  description: 'Software sob medida com automação e IA para acelerar seu negócio. Criamos sistemas web, apps mobile e automações com entrega rápida e custo acessível. MVP em até 30 dias.',
-  keywords: ['desenvolvimento de sistemas', 'software house', 'automação com IA', 'MVP startup', 'aplicativo mobile', 'React Native', 'Next.js'],
-  authors: [{ name: 'mlluizdevtech' }],
+  title: {
+    default: 'mlluizdevtech | Software House com IA e Automação — MVP em 30 dias',
+    template: '%s | mlluizdevtech',
+  },
+  description: 'Software house brasileira que usa IA e automação para criar sistemas web, apps mobile e automações até 40% mais rápido. MVP em 30 dias, preço justo. React, Next.js, Node.js, React Native.',
+  keywords: [
+    'software house',
+    'software house brasil',
+    'desenvolvimento de sistemas',
+    'desenvolvimento web',
+    'desenvolvimento de aplicativos',
+    'automação com IA',
+    'inteligência artificial',
+    'MVP startup',
+    'aplicativo mobile',
+    'React Native',
+    'Next.js',
+    'Node.js',
+    'software sob medida',
+    'sistema web personalizado',
+    'chatbot IA',
+    'SaaS desenvolvimento',
+    'software house barata',
+    'desenvolvedor freelancer brasil',
+    'criar aplicativo',
+    'criar site profissional',
+    'mlluizdevtech',
+  ],
+  authors: [{ name: 'mlluizdevtech', url: 'https://mlluizdevtech.com.br' }],
   creator: 'mlluizdevtech',
+  publisher: 'mlluizdevtech',
   generator: 'Next.js',
+  category: 'Technology',
+  classification: 'Software Development',
+  referrer: 'origin-when-cross-origin',
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
     siteName: 'mlluizdevtech',
     title: 'mlluizdevtech | Software House com IA e Automação',
-    description: 'A software house que usa IA para entregar sistemas em metade do tempo, pelo mesmo preço do mercado.',
+    description: 'Software house brasileira que usa IA para entregar sistemas em metade do tempo. Sistemas web, apps mobile, automação com IA. MVP em 30 dias.',
+    url: 'https://mlluizdevtech.com.br',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'mlluizdevtech - Software House com IA e Automação',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'mlluizdevtech | Software House com IA e Automação',
-    description: 'A software house que usa IA para entregar sistemas em metade do tempo.',
+    description: 'Software house que usa IA para entregar sistemas em metade do tempo. MVP em 30 dias.',
+    images: ['/opengraph-image'],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://mlluizdevtech.com.br',
   },
   icons: {
     icon: [
@@ -59,12 +110,21 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-icon.png',
   },
+  verification: {
+    // Add your verification codes here when available
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+  },
 }
 
 export const viewport = {
-  themeColor: '#0064e0',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a1317' },
+  ],
   width: 'device-width',
   initialScale: 1,
+  maximumScale: 5,
 }
 
 export default function RootLayout({
@@ -84,6 +144,8 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <MotionProvider>
             <LocalBusinessJsonLd />
+            <WebSiteJsonLd />
+            <FAQPageJsonLd />
             {children}
             {process.env.NODE_ENV === 'production' && <Analytics />}
           </MotionProvider>

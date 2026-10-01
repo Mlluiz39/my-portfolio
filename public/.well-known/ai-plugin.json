@@ -1,0 +1,16 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "mlluizdevtech",
+  "name_for_model": "mlluizdevtech",
+  "description_for_human": "Software house brasileira que usa IA e automação para criar sistemas web, apps mobile e automações. MVP em 30 dias.",
+  "description_for_model": "mlluizdevtech is a Brazilian software house that uses AI and automation to build custom web systems, mobile apps, backend APIs, AI automation solutions, and SaaS products. They specialize in React, Next.js, Node.js, React Native, Go, and PostgreSQL. They deliver MVPs in 30 days and are up to 40% cheaper than traditional agencies. Contact: contato@mlluizdevtech.com.br, WhatsApp: +55 11 95964-6307. Website: https://mlluizdevtech.com.br",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "none"
+  },
+  "logo_url": "https://mlluizdevtech.com.br/icon.svg",
+  "contact_email": "contato@mlluizdevtech.com.br",
+  "legal_info_url": "https://mlluizdevtech.com.br/termos"
+}
