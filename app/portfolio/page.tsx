@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ExternalLink, BarChart3, GraduationCap, Settings } from "lucide-react"
+import { ArrowRight, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -57,10 +57,8 @@ const projects = [
     solution: "Dashboard automatizado com dados em tempo real e insights preditivos.",
     result: "Melhoria de 25% na eficiência operacional e redução de custos.",
     technologies: ["Next.js", "Python", "PostgreSQL", "Recharts"],
-    image: null,
+    image: "/portfolio-Dashboard-BI-Logística.png",
     imageAlt: "Dashboard de business intelligence para logística com gráficos e KPIs em tempo real",
-    placeholderIcon: BarChart3,
-    placeholderGradient: "from-blue-600 to-cyan-500",
   },
   {
     id: 5,
@@ -71,10 +69,8 @@ const projects = [
     solution: "MVP funcional em 30 dias com todas features essenciais para começar a vender.",
     result: "Lançamento bem-sucedido com 500+ alunos no primeiro mês.",
     technologies: ["Next.js", "Node.js", "PostgreSQL", "Stripe"],
-    image: null,
+    image: "/portfolio-edtech.png",
     imageAlt: "Plataforma EdTech com lista de cursos, sistema de gamificação e área do aluno",
-    placeholderIcon: GraduationCap,
-    placeholderGradient: "from-amber-500 to-orange-600",
   },
   {
     id: 6,
@@ -85,10 +81,8 @@ const projects = [
     solution: "Camada de integração que unificou todos os sistemas em tempo real.",
     result: "Eliminação de retrabalho e visão unificada dos dados da empresa.",
     technologies: ["Node.js", "Go", "PostgreSQL", "RabbitMQ"],
-    image: null,
+    image: "/portfolio-erp.png",
     imageAlt: "Diagrama de integração de sistemas ERP com fluxos de dados conectados",
-    placeholderIcon: Settings,
-    placeholderGradient: "from-slate-600 to-zinc-700",
   },
 ]
 
@@ -132,35 +126,14 @@ export default function PortfolioPage() {
                 >
                   {/* Project Image */}
                   <div className="aspect-video relative overflow-hidden">
-                    {project.image ? (
-                      <Image
-                        src={project.image}
-                        alt={project.imageAlt}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                    ) : (
-                      <div className={`w-full h-full bg-gradient-to-br ${project.placeholderGradient} flex items-center justify-center relative`}>
-                        {/* Decorative pattern */}
-                        <div className="absolute inset-0 opacity-10">
-                          <div className="absolute inset-0" style={{
-                            backgroundImage: `radial-gradient(circle at 25% 25%, white 1px, transparent 1px), radial-gradient(circle at 75% 75%, white 1px, transparent 1px)`,
-                            backgroundSize: "30px 30px",
-                          }} />
-                        </div>
-                        {project.placeholderIcon && (
-                          <project.placeholderIcon className="h-16 w-16 text-white/80" strokeWidth={1.5} />
-                        )}
-                        {/* Floating elements for visual interest */}
-                        <div className="absolute top-4 right-4 w-20 h-20 border border-white/20 rounded-2xl rotate-12" />
-                        <div className="absolute bottom-6 left-6 w-12 h-12 border border-white/15 rounded-xl -rotate-6" />
-                      </div>
-                    )}
-                    {/* Overlay gradient for image */}
-                    {project.image && (
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    )}
+                    <Image
+                      src={project.image}
+                      alt={project.imageAlt}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   
                   {/* Project Content */}
