@@ -1,0 +1,5 @@
+# Security contact for mlluizdevtech
+Contact: mailto:contato@mlluizdevtech.com.br
+Preferred-Languages: pt-BR, en
+Canonical: https://mlluizdevtech.com.br/.well-known/security.txt
+Expires: 2027-12-31T23:59:59.000Z
