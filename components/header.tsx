@@ -34,28 +34,29 @@ export function Header() {
   return (
     <motion.header 
       className={cn(
-        "sticky top-0 z-50 w-full border-b bg-[var(--canvas)] transition-all duration-300",
+        "sticky top-0 z-50 w-full border-b transition-all duration-500",
         isScrolled 
-          ? "border-[var(--hairline)] shadow-sm backdrop-blur-md bg-[var(--canvas)]/95" 
-          : "border-[var(--hairline-soft)]"
+          ? "border-[var(--hairline)] shadow-lg backdrop-blur-xl bg-[var(--canvas)]/80" 
+          : "border-transparent bg-[var(--canvas)]/50 backdrop-blur-md"
       )}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2.5 group">
           <motion.div 
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--primary)] text-white font-bold text-sm"
-            whileHover={{ scale: 1.1, rotate: -5 }}
+            className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--primary)] text-white font-bold text-sm shadow-md"
+            whileHover={{ scale: 1.1, rotate: -5, boxShadow: "0 0 20px rgba(0, 100, 224, 0.4)" }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
+            style={{ transformStyle: "preserve-3d" }}
           >
             m
           </motion.div>
           <motion.span 
-            className="text-lg font-semibold text-[var(--ink-deep)]"
+            className="text-lg font-bold text-[var(--ink-deep)]"
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
@@ -65,19 +66,20 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-0.5">
           {navItems.map((item, index) => (
             <motion.div
               key={item.href}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index }}
+              initial={{ opacity: 0, y: -15, rotateX: 20 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ delay: 0.08 * index, ease: [0.16, 1, 0.3, 1] }}
+              style={{ perspective: "500px" }}
             >
               <Link
                 href={item.href}
                 className={cn(
-                  "relative px-4 py-2 text-sm font-medium rounded-full transition-colors",
-                  "text-[var(--charcoal)] hover:bg-[var(--surface-soft)] hover:text-[var(--ink-deep)]"
+                  "relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
+                  "text-[var(--charcoal)] hover:bg-[var(--surface-soft)] hover:text-[var(--ink-deep)] hover:shadow-sm"
                 )}
               >
                 <motion.span
@@ -94,15 +96,19 @@ export function Header() {
         {/* Desktop CTA */}
         <motion.div 
           className="hidden md:flex items-center gap-3"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.div 
+            whileHover={{ scale: 1.05, z: 10 }} 
+            whileTap={{ scale: 0.95 }}
+            style={{ transformStyle: "preserve-3d" }}
+          >
             <Button
               asChild
               variant="outline"
-              className="rounded-full border-2 border-[var(--ink-deep)] text-[var(--ink-deep)] hover:bg-[var(--surface-soft)]"
+              className="rounded-full border-2 border-[var(--ink-deep)] text-[var(--ink-deep)] hover:bg-[var(--surface-soft)] transition-all"
             >
               <a
                 href={getWhatsAppUrl("general")}
@@ -114,10 +120,14 @@ export function Header() {
             </Button>
           </motion.div>
           <ThemeToggle />
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.div 
+            whileHover={{ scale: 1.05, z: 10 }} 
+            whileTap={{ scale: 0.95 }}
+            style={{ transformStyle: "preserve-3d" }}
+          >
             <Button
               asChild
-              className="rounded-full bg-[var(--ink-button)] text-[var(--on-ink-button)] hover:bg-[var(--charcoal)]"
+              className="rounded-full bg-[var(--ink-button)] text-[var(--on-ink-button)] hover:bg-[var(--charcoal)] shadow-md hover:shadow-lg transition-all"
             >
               <Link href="/contato">Solicitar Orçamento</Link>
             </Button>
@@ -161,7 +171,7 @@ export function Header() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            className="md:hidden border-t border-[var(--hairline-soft)] bg-[var(--canvas)] overflow-hidden"
+            className="md:hidden border-t border-[var(--hairline-soft)] bg-[var(--canvas)]/95 backdrop-blur-xl overflow-hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

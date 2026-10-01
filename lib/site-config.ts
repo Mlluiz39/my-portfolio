@@ -6,15 +6,15 @@ export const siteConfig = {
   url: "https://mlluizdevtech.com.br",
 
   contact: {
-    phone: "5511977869073",
-    phoneFormatted: "(11) 97786-9073",
+    phone: "5511959646307",
+    phoneFormatted: "(11) 95964-6307",
     email: "contato@mlluizdevtech.com.br",
     location: "Brasil - Atendimento remoto",
     responseTime: "Até 24h úteis",
   },
 
   whatsapp: {
-    baseUrl: "https://wa.me/5511977869073",
+    baseUrl: "https://wa.me/5511959646307",
     messages: {
       general:
         "Olá! Vim pelo site e gostaria de saber mais sobre os serviços.",

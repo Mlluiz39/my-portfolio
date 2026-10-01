@@ -222,3 +222,82 @@
     text-wrap: pretty;
   }
 }
+
+/* 3D Perspective and depth */
+.perspective-deep {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hairline);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--steel);
+}
+
+/* Glow animation for hero badge */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 100, 224, 0.1), 0 0 40px rgba(0, 100, 224, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 100, 224, 0.2), 0 0 60px rgba(0, 100, 224, 0.1);
+  }
+}
+
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Gradient text utility */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-soft) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated gradient border */
+@keyframes gradient-rotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animated-border {
+  --angle: 0deg;
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image:
+    linear-gradient(var(--canvas), var(--canvas)),
+    conic-gradient(from var(--angle), var(--primary), transparent, var(--primary-soft), transparent, var(--primary));
+  animation: gradient-rotate 6s linear infinite;
+}
+
+.dark .animated-border {
+  background-image:
+    linear-gradient(var(--canvas), var(--canvas)),
+    conic-gradient(from var(--angle), var(--primary-soft), transparent, var(--primary), transparent, var(--primary-soft));
+}
