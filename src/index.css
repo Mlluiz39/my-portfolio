@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+html, body {
+  background-color: #000000;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar for a clean, distraction-free view */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
