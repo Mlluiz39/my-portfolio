@@ -105,7 +105,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onOpenInquiry 
   ];
 
   return (
-    <section id="process" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-black/60 backdrop-blur-[2px] border-t border-white/5">
+    <section id="process" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-black/60 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-white/10">

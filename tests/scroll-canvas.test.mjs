@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import ts from 'typescript';
 
-function mount() {
+function mount({ mobile = false } = {}) {
   let cleanup;
   const requests = [];
   const listeners = {};
@@ -20,7 +20,7 @@ function mount() {
   const react = { useRef: () => ({ current: canvas }), useEffect: (fn) => { cleanup = fn(); }, createElement() {} };
   const context = {
     module: { exports: {} }, require: (name) => name === 'react' ? react : class { on() {} raf() {} destroy() {} },
-    Image, window: { innerWidth: 1280, innerHeight: 720, scrollY: 0, devicePixelRatio: 1,
+    Image, window: { matchMedia: () => ({ matches: mobile }), innerWidth: 1280, innerHeight: 720, scrollY: 0, devicePixelRatio: 1,
       addEventListener: (name, fn) => { listeners[name] = fn; }, removeEventListener() {} },
     document: { documentElement: { scrollHeight: 10720 } },
     requestAnimationFrame: (fn) => { rafs.push(fn); return rafs.length; }, cancelAnimationFrame() {},
@@ -79,5 +79,14 @@ test('fast scroll keeps downloads bounded and prioritizes the new position', () 
   for (let i = 2; i < app.requests.length; i++) app.finish(app.requests[i]);
   assert.ok(app.requests.length < 30);
   assert.ok(app.draws.at(-1).endsWith('300.jpg'));
+  app.cleanup();
+});
+
+
+test('phones request smaller WebP backgrounds', () => {
+  const app = mount({ mobile: true });
+  assert.equal(app.requests[0].url, '/frames/mobile/ezgif-frame-001.webp');
+  for (let i = 0; i < app.requests.length; i++) app.finish(app.requests[i]);
+  assert.ok(app.requests.every(img => img.url.startsWith('/frames/mobile/') && img.url.endsWith('.webp')));
   app.cleanup();
 });

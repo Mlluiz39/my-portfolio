@@ -106,7 +106,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onOpenInquiry }) => 
   ];
 
   return (
-    <section id="services" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-black/60 backdrop-blur-[2px] border-t border-white/5">
+    <section id="services" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-black/60 border-t border-white/5">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
 

@@ -1,0 +1,209 @@
+{
+  "method": {
+    "url": "http://localhost:5180",
+    "runs": 3,
+    "desktop": {
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1
+    },
+    "mobile": {
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 2,
+      "cpuSlowdown": 4,
+      "latencyMs": 100,
+      "downloadBytesPerSecond": 200000
+    },
+    "cache": "disabled",
+    "scrollDurationMs": 4000
+  },
+  "before": [
+    {
+      "profile": "desktop",
+      "run": 1,
+      "opening": {
+        "firstDraw": 372.6000000014901,
+        "lcp": 372,
+        "frames": 9,
+        "frameBytes": 503105
+      },
+      "scroll": {
+        "fps": 23.058613507884562,
+        "p95FrameMs": 66.70000000000005,
+        "framesOver50ms": 23
+      }
+    },
+    {
+      "profile": "desktop",
+      "run": 2,
+      "opening": {
+        "firstDraw": 391.5999999977648,
+        "lcp": 392,
+        "frames": 9,
+        "frameBytes": 503105
+      },
+      "scroll": {
+        "fps": 23.554497669344443,
+        "p95FrameMs": 66.69999999999982,
+        "framesOver50ms": 20
+      }
+    },
+    {
+      "profile": "desktop",
+      "run": 3,
+      "opening": {
+        "firstDraw": 374.9000000022352,
+        "lcp": 384,
+        "frames": 9,
+        "frameBytes": 503105
+      },
+      "scroll": {
+        "fps": 23.40287805606732,
+        "p95FrameMs": 66.70000000000005,
+        "framesOver50ms": 22
+      }
+    },
+    {
+      "profile": "mobile-4g-cpu4",
+      "run": 1,
+      "opening": {
+        "firstDraw": 1799.199999999255,
+        "lcp": 1288,
+        "frames": 9,
+        "frameBytes": 503105
+      },
+      "scroll": {
+        "fps": 43.21201046965281,
+        "p95FrameMs": 50,
+        "framesOver50ms": 4
+      }
+    },
+    {
+      "profile": "mobile-4g-cpu4",
+      "run": 2,
+      "opening": {
+        "firstDraw": 1847.800000000745,
+        "lcp": 1412,
+        "frames": 1,
+        "frameBytes": 54095
+      },
+      "scroll": {
+        "fps": 44.87862934219335,
+        "p95FrameMs": 49.899999999999636,
+        "framesOver50ms": 3
+      }
+    },
+    {
+      "profile": "mobile-4g-cpu4",
+      "run": 3,
+      "opening": {
+        "firstDraw": 1953,
+        "lcp": 1564,
+        "frames": 1,
+        "frameBytes": 54095
+      },
+      "scroll": {
+        "fps": 41.080542761110415,
+        "p95FrameMs": 50,
+        "framesOver50ms": 5
+      }
+    }
+  ],
+  "after": [
+    {
+      "profile": "desktop",
+      "run": 1,
+      "opening": {
+        "firstDraw": 368.5,
+        "lcp": 372,
+        "frames": 9,
+        "frameBytes": 503105
+      },
+      "scroll": {
+        "fps": 57.522562729346525,
+        "p95FrameMs": 16.800000000000182,
+        "framesOver50ms": 0
+      }
+    },
+    {
+      "profile": "desktop",
+      "run": 2,
+      "opening": {
+        "firstDraw": 377.80000000074506,
+        "lcp": 416,
+        "frames": 9,
+        "frameBytes": 503105
+      },
+      "scroll": {
+        "fps": 56.01752726186334,
+        "p95FrameMs": 33.30000000000018,
+        "framesOver50ms": 0
+      }
+    },
+    {
+      "profile": "desktop",
+      "run": 3,
+      "opening": {
+        "firstDraw": 362.19999999925494,
+        "lcp": 360,
+        "frames": 9,
+        "frameBytes": 503105
+      },
+      "scroll": {
+        "fps": 56.76442762535482,
+        "p95FrameMs": 33.29999999999973,
+        "framesOver50ms": 0
+      }
+    },
+    {
+      "profile": "mobile-4g-cpu4",
+      "run": 1,
+      "opening": {
+        "firstDraw": 1428.199999999255,
+        "lcp": 0,
+        "frames": 1,
+        "frameBytes": 20006
+      },
+      "scroll": {
+        "fps": 56.76584090626171,
+        "p95FrameMs": 16.800000000000182,
+        "framesOver50ms": 1
+      }
+    },
+    {
+      "profile": "mobile-4g-cpu4",
+      "run": 2,
+      "opening": {
+        "firstDraw": 1401.800000000745,
+        "lcp": 1380,
+        "frames": 9,
+        "frameBytes": 180382
+      },
+      "scroll": {
+        "fps": 57.761732851985556,
+        "p95FrameMs": 16.800000000000182,
+        "framesOver50ms": 0
+      }
+    },
+    {
+      "profile": "mobile-4g-cpu4",
+      "run": 3,
+      "opening": {
+        "firstDraw": 1355.3999999985099,
+        "lcp": 1332,
+        "frames": 9,
+        "frameBytes": 180382
+      },
+      "scroll": {
+        "fps": 57.51419181356439,
+        "p95FrameMs": 16.800000000000182,
+        "framesOver50ms": 0
+      }
+    }
+  ]
+}

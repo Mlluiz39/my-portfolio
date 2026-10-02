@@ -90,15 +90,15 @@ export const FooterMlluiz: React.FC<FooterMlluizProps> = ({ onOpenInquiry, onNav
             
             <div className="space-y-2.5 text-xs font-mono">
               <a
-                href="mailto:mlluizpereira39@gmail.com"
+                href="mailto:contato@mlluizdevtech.com.br"
                 className="flex items-center gap-2.5 text-zinc-300 hover:text-amber-400 transition-colors"
               >
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>mlluizpereira39@gmail.com</span>
+                <span>contato@mlluizdevtech.com.br</span>
               </a>
 
               <a
-                href="https://wa.me/5511999999999?text=Ol%C3%A1%20mlluizdevtech!%20Gostaria%20de%20conversar%20sobre%20um%20projeto."
+                href="https://wa.me/5511959646307?text=Ol%C3%A1%20mlluizdevtech!%20Gostaria%20de%20conversar%20sobre%20um%20projeto."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-zinc-300 hover:text-emerald-400 transition-colors"

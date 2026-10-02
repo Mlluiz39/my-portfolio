@@ -141,8 +141,8 @@ npm run preview
 Disponível para novos projetos de desenvolvimento de software, consultoria de arquitetura e integração de inteligência artificial.
 
 - 🌐 **Software House**: [mlluizdevtech](https://github.com/Mlluiz39)
-- 📧 **E-mail**: [mlluizpereira39@gmail.com](mailto:mlluizpereira39@gmail.com)
-- 💬 **WhatsApp**: [+55 (11) 99999-9999](https://wa.me/5511999999999)
+- 📧 **E-mail**: [contato@mlluizdevtech.com.br](mailto:contato@mlluizdevtech.com.br)
+- 💬 **WhatsApp**: [+55 (11) 95964-6307](https://wa.me/5511959646307)
 - 💼 **GitHub**: [@Mlluiz39](https://github.com/Mlluiz39)
 
 ---

@@ -38,7 +38,7 @@ export const FinalVortexCTA: React.FC<FinalVortexCTAProps> = ({ onOpenInquiry })
           </button>
 
           <a
-            href="https://wa.me/5511999999999?text=Ol%C3%A1%20mlluizdevtech!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20de%20software."
+            href="https://wa.me/5511959646307?text=Ol%C3%A1%20mlluizdevtech!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20de%20software."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 px-6 py-4 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-emerald-500/40 text-zinc-300 hover:text-emerald-300 font-mono text-xs uppercase tracking-wider transition-all backdrop-blur-md"

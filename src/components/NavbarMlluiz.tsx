@@ -37,7 +37,7 @@ export const NavbarMlluiz: React.FC<NavbarMlluizProps> = ({
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#03050a]/90 backdrop-blur-xl border-b border-white/10 py-3.5 shadow-2xl shadow-black/80'
+          ? 'bg-[#03050a]/95 border-b border-white/10 py-3.5 shadow-2xl shadow-black/80'
           : 'bg-transparent py-6'
       }`}
     >

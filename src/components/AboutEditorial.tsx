@@ -30,7 +30,7 @@ export const AboutEditorial: React.FC<AboutEditorialProps> = ({ onOpenInquiry })
   ];
 
   return (
-    <section id="about" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-black/60 backdrop-blur-[2px] border-t border-white/5">
+    <section id="about" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-black/60 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Refined Editorial Manifesto */}

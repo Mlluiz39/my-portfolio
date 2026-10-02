@@ -3,9 +3,11 @@ import Lenis from 'lenis';
 
 const FRAME_COUNT = 300;
 
-function getFrameUrl(index: number): string {
+function getFrameUrl(index: number, mobile: boolean): string {
   const padded = String(index + 1).padStart(3, '0');
-  return `/frames/ezgif-frame-${padded}.jpg`;
+  return mobile
+    ? `/frames/mobile/ezgif-frame-${padded}.webp`
+    : `/frames/ezgif-frame-${padded}.jpg`;
 }
 
 export const ScrollCanvas: React.FC = () => {
@@ -17,6 +19,7 @@ export const ScrollCanvas: React.FC = () => {
     const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
 
+    const mobile = window.matchMedia('(max-width: 767px)').matches;
     const images: HTMLImageElement[] = new Array(FRAME_COUNT);
     const loaded: boolean[] = new Array(FRAME_COUNT).fill(false);
 
@@ -141,7 +144,7 @@ export const ScrollCanvas: React.FC = () => {
         };
         img.onload = () => finish(true);
         img.onerror = () => finish(false);
-        img.src = getFrameUrl(index);
+        img.src = getFrameUrl(index, mobile);
       }
     };
 
@@ -163,7 +166,7 @@ export const ScrollCanvas: React.FC = () => {
       firstFrameReady = true;
       loadNearbyFrames();
     };
-    firstImg.src = getFrameUrl(0);
+    firstImg.src = getFrameUrl(0, mobile);
 
     const updateScroll = () => {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
