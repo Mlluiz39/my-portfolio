@@ -40,7 +40,7 @@ export const AboutEditorial: React.FC<AboutEditorialProps> = ({ onOpenInquiry })
               Manifesto & Identidade
             </div>
 
-            <h2 className="font-['Syne',sans-serif] text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
+            <h2 className="font-['Syne',sans-serif] text-[clamp(1.5rem,7vw,2.25rem)] sm:text-4xl lg:text-4xl xl:text-5xl font-bold xl:font-extrabold text-white tracking-tight leading-[1.08]">
               TECNOLOGIA NÃO PRECISA SER{' '}
               <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">
                 COMPLICADA.
@@ -86,7 +86,7 @@ export const AboutEditorial: React.FC<AboutEditorialProps> = ({ onOpenInquiry })
           </div>
 
           {/* Right Column: Values Grid */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
             {values.map((v, idx) => {
               const Icon = v.icon;
               return (

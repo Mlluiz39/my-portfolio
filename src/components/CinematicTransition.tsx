@@ -37,7 +37,7 @@ export const CinematicTransition: React.FC = () => {
             <Sparkles className="w-3.5 h-3.5" />
             Transição Cinemática
           </div>
-          <h2 className="font-['Syne',sans-serif] text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="font-['Syne',sans-serif] text-[clamp(1.5rem,7vw,1.875rem)] sm:text-3xl md:text-4xl font-bold md:font-extrabold text-white tracking-tight">
             DO PENSAMENTO À REALIDADE:
             <br />
             <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">
@@ -50,7 +50,7 @@ export const CinematicTransition: React.FC = () => {
         </div>
 
         {/* 4 Connected Milestones */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           {milestones.map((item, idx) => {
             const Icon = item.icon;
             return (

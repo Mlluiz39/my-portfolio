@@ -68,7 +68,7 @@ export const AICoreSection: React.FC<AICoreSectionProps> = ({ onOpenInquiry }) =
             <Sparkles className="w-3.5 h-3.5" />
             Engenharia Orientada a Multiplicação
           </div>
-          <h2 className="font-['Syne',sans-serif] text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
+          <h2 className="font-['Syne',sans-serif] text-[clamp(1.5rem,7vw,2.25rem)] sm:text-4xl lg:text-5xl font-bold lg:font-extrabold text-white tracking-tight">
             IA NÃO É O PRODUTO.
             <br />
             <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">

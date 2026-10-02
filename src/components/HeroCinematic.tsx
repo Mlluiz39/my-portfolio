@@ -20,14 +20,14 @@ export const HeroCinematic: React.FC<HeroCinematicProps> = ({
         <div className="max-w-2xl lg:max-w-3xl">
           {/* Kicker badge */}
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 font-mono text-xs uppercase tracking-wider mb-6 backdrop-blur-md">
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-2 w-2 shrink-0">
               <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500 shadow-[0_0_8px_#ff9900]"></span>
             </span>
             <span className="font-semibold">mlluizdevtech • Brazilian Software House</span>
           </div>
 
           {/* Headline */}
-          <h1 className="font-['Syne',sans-serif] text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-black tracking-tight text-white leading-[1.08] mb-6">
+          <h1 className="font-['Syne',sans-serif] text-[clamp(1.75rem,8vw,2.25rem)] sm:text-5xl md:text-6xl lg:text-[4.2rem] font-bold sm:font-black tracking-tight text-white leading-[1.08] mb-6">
             Software que transforma{' '}
             <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(255,140,40,0.4)]">
               ideias em negócios digitais.

@@ -114,7 +114,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onOpenInquiry 
               <Sparkles className="w-3.5 h-3.5" />
               Metodologia de Engenharia
             </div>
-            <h2 className="font-['Syne',sans-serif] text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
+            <h2 className="font-['Syne',sans-serif] text-[clamp(1.5rem,7vw,2.25rem)] sm:text-4xl lg:text-6xl font-bold lg:font-extrabold text-white tracking-tight">
               PROCESSO CLARO.
               <br />
               <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">
@@ -165,7 +165,7 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onOpenInquiry 
           const current = steps[activeStep];
           const Icon = current.icon;
           return (
-            <div className="rounded-3xl bg-[#060a14] border border-amber-500/30 p-8 sm:p-12 relative overflow-hidden shadow-2xl">
+            <div className="rounded-3xl bg-[#060a14] border border-amber-500/30 p-5 sm:p-12 relative overflow-hidden shadow-2xl">
               {/* Background watermark */}
               <div className="absolute right-8 -bottom-10 font-mono text-[160px] font-black text-white/[0.02] pointer-events-none select-none">
                 {current.number}
@@ -173,15 +173,15 @@ export const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onOpenInquiry 
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-7 space-y-6">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                    <div className="w-12 h-12 shrink-0 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
                       <Icon className="w-6 h-6" />
                     </div>
                     <div>
                       <span className="font-mono text-xs text-amber-400 uppercase tracking-widest font-semibold">
                         FASE {current.number} • {current.duration}
                       </span>
-                      <h3 className="font-['Syne',sans-serif] text-3xl sm:text-4xl font-extrabold text-white">
+                      <h3 className="font-['Syne',sans-serif] text-xl sm:text-3xl lg:text-2xl xl:text-3xl font-bold text-white">
                         {current.title}
                       </h3>
                     </div>

@@ -52,7 +52,7 @@ export const TrustMetrics: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="font-['Syne',sans-serif] text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-1 group-hover:text-amber-200 transition-colors">
+                <div className="font-['Syne',sans-serif] text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-white tracking-tight mb-1 group-hover:text-amber-200 transition-colors">
                   {item.value}
                 </div>
 
