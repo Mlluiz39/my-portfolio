@@ -20,21 +20,25 @@ export const ScrollCanvas: React.FC = () => {
     const images: HTMLImageElement[] = new Array(FRAME_COUNT);
     const loaded: boolean[] = new Array(FRAME_COUNT).fill(false);
 
-    let currentProgress = 0;
     let targetProgress = 0;
     let lastDrawnIndex = -1;
     let animId: number;
+    let disposed = false;
+    let activeLoads = 0;
+    let firstFrameReady = false;
+    const pending = new Set<number>();
+    const failed = new Set<number>();
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = Math.floor(window.innerWidth * dpr);
       canvas.height = Math.floor(window.innerHeight * dpr);
       lastDrawnIndex = -1;
-      draw(currentProgress);
+      draw(targetProgress);
     };
 
     const drawFrame = (img: HTMLImageElement) => {
-      if (!img || !img.complete) return;
+      if (!img || !img.complete || !img.naturalWidth) return;
 
       const cw = canvas.width;
       const ch = canvas.height;
@@ -82,7 +86,7 @@ export const ScrollCanvas: React.FC = () => {
         }
       }
 
-      return images[0] || null;
+      return null;
     };
 
     const draw = (progress: number) => {
@@ -95,32 +99,71 @@ export const ScrollCanvas: React.FC = () => {
 
       const imgToDraw = getNearestLoadedImage(frameIndex);
       if (imgToDraw && imgToDraw.complete) {
+        const loadedIndex = images.indexOf(imgToDraw);
+        if (loadedIndex === lastDrawnIndex) return;
         drawFrame(imgToDraw);
-        lastDrawnIndex = frameIndex;
+        lastDrawnIndex = loadedIndex;
       }
     };
 
-    // Preload all frames
-    const firstImg = new Image();
-    firstImg.src = getFrameUrl(0);
-    images[0] = firstImg;
-    firstImg.onload = () => {
-      loaded[0] = true;
-      resize();
+    // Fetch only nearby frames, prioritizing the current scroll position.
+    const loadNearbyFrames = () => {
+      if (disposed) return;
+      const center = Math.round(targetProgress * (FRAME_COUNT - 1));
+      const candidates = [center];
+      for (let offset = 1; offset <= 8; offset++) {
+        candidates.push(center + offset, center - offset);
+      }
+      for (const index of candidates) {
+        if (activeLoads >= 4) break;
+        if (index < 0 || index >= FRAME_COUNT || loaded[index] || pending.has(index) || failed.has(index)) continue;
+        const img = new Image();
+        images[index] = img;
+        pending.add(index);
+        activeLoads++;
+        img.decoding = 'async';
+        const finish = (success: boolean) => {
+          if (disposed) return;
+          pending.delete(index);
+          activeLoads--;
+          loaded[index] = success;
+          if (!success) failed.add(index);
+          draw(targetProgress);
+          // Release distant decoded images while keeping the displayed fallback.
+          const currentCenter = Math.round(targetProgress * (FRAME_COUNT - 1));
+          for (let i = 0; i < FRAME_COUNT; i++) {
+            if (Math.abs(i - currentCenter) > 20 && i !== lastDrawnIndex && !pending.has(i)) {
+              delete images[i];
+              loaded[i] = false;
+            }
+          }
+          loadNearbyFrames();
+        };
+        img.onload = () => finish(true);
+        img.onerror = () => finish(false);
+        img.src = getFrameUrl(index);
+      }
     };
 
-    for (let i = 1; i < FRAME_COUNT; i++) {
-      const img = new Image();
-      img.src = getFrameUrl(i);
-      images[i] = img;
-      img.onload = () => {
-        loaded[i] = true;
-        if (Math.round(currentProgress * (FRAME_COUNT - 1)) === i) {
-          lastDrawnIndex = -1;
-          draw(currentProgress);
-        }
-      };
-    }
+    // Give the first visible frame priority before starting background requests.
+    const firstImg = new Image();
+    images[0] = firstImg;
+    firstImg.fetchPriority = 'high';
+    firstImg.decoding = 'async';
+    firstImg.onload = () => {
+      if (disposed) return;
+      loaded[0] = true;
+      firstFrameReady = true;
+      resize();
+      loadNearbyFrames();
+    };
+    firstImg.onerror = () => {
+      if (disposed) return;
+      failed.add(0);
+      firstFrameReady = true;
+      loadNearbyFrames();
+    };
+    firstImg.src = getFrameUrl(0);
 
     const updateScroll = () => {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -129,23 +172,12 @@ export const ScrollCanvas: React.FC = () => {
       } else {
         targetProgress = Math.min(1, Math.max(0, window.scrollY / maxScroll));
       }
-    };
-
-    const animate = () => {
-      const delta = targetProgress - currentProgress;
-      if (Math.abs(delta) > 0.0001) {
-        currentProgress += delta * 0.085;
-        draw(currentProgress);
-      } else if (currentProgress !== targetProgress) {
-        currentProgress = targetProgress;
-        draw(currentProgress);
-      }
-      animId = requestAnimationFrame(animate);
+      if (firstFrameReady) loadNearbyFrames();
     };
 
     // Setup Lenis for smooth momentum scrolling
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.6,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
@@ -154,12 +186,14 @@ export const ScrollCanvas: React.FC = () => {
       updateScroll();
     });
 
-    let lenisRafId: number;
-    const lenisRaf = (time: number) => {
-      lenis.raf(time);
-      lenisRafId = requestAnimationFrame(lenisRaf);
+    // One animation loop; draw only when the visible frame changes.
+    const animate = (time: number) => {
+      if (!document.hidden) {
+        lenis.raf(time);
+        draw(targetProgress);
+      }
+      animId = requestAnimationFrame(animate);
     };
-    lenisRafId = requestAnimationFrame(lenisRaf);
 
     window.addEventListener('resize', resize);
     window.addEventListener('scroll', updateScroll, { passive: true });
@@ -169,10 +203,16 @@ export const ScrollCanvas: React.FC = () => {
     animId = requestAnimationFrame(animate);
 
     return () => {
+      disposed = true;
+      for (const img of images) {
+        if (img) {
+          img.onload = null;
+          img.onerror = null;
+        }
+      }
       window.removeEventListener('resize', resize);
       window.removeEventListener('scroll', updateScroll);
       cancelAnimationFrame(animId);
-      cancelAnimationFrame(lenisRafId);
       lenis.destroy();
     };
   }, []);
