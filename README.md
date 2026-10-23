@@ -20,18 +20,19 @@ O build verifica TypeScript e gera o site em `dist/`.
 
 ## Estrutura ativa
 
-- `src/App.tsx`: apresentação, serviços, GitHub, sobre e contato.
-- `src/components/ui/liquid-sculpture-hero.tsx`: hero com partículas WebGL e fallback estático.
+- `src/App.tsx`: apresentação, projetos em destaque, serviços, GitHub, sobre e contato.
+- `src/components/ui/liquid-sculpture-hero.tsx`: hero com capas de projeto em WebGL, troca por índice e fallback estático.
+- `src/data/projects.ts`: dados e links dos quatro projetos do hero.
 - `src/index.css`: identidade visual e regras responsivas.
 - `index.html`: metadados, fontes e dados estruturados.
-- `public/sculpture/`: imagens do hero (clara, escura e mobile).
+- `public/projects/`: capas dos projetos em desktop e mobile.
 - `public/llms*.txt`: informações públicas alinhadas ao site.
 
-React 19, TypeScript e Vite. A interface usa rolagem nativa, foco visível, link para pular ao conteúdo e suporte a movimento reduzido. O hero carrega a imagem estática primeiro e só então ativa o WebGL; sem WebGL2, a imagem estática permanece. Os componentes e frames da versão anterior não são carregados pela página atual.
+React 19, TypeScript e Vite. A interface usa rolagem nativa, foco visível, link para pular ao conteúdo e suporte a movimento reduzido. O hero carrega a capa estática primeiro e só então ativa o WebGL; sem WebGL2, a capa permanece. Os índices 01–04 trocam o projeto sem recriar o contexto gráfico. Os componentes e frames da versão anterior não são carregados pela página atual.
 
 ## Conteúdo
 
-Os antigos AgroTrack, Krypton Pay, OmniLog e ClinicOS eram exemplos e não são apresentados como trabalhos reais. A seção de trabalhos aponta para o GitHub público. O contato usa WhatsApp no número (11) 95964-6307 e `mailto:`, sem simular envio de formulário.
+Os antigos AgroTrack, Krypton Pay, OmniLog e ClinicOS eram exemplos e não são apresentados como trabalhos reais. O hero apresenta quatro projetos reais — Cloudflare Tunnel Manager, ConectaCRM, voice-typer e OpenPass API — com link para cada repositório. A seção de trabalhos aponta para o GitHub público. O contato usa WhatsApp no número (11) 95964-6307 e `mailto:`, sem simular envio de formulário.
 
 - GitHub: https://github.com/Mlluiz39
 - E-mail: mlluizpereira39@gmail.com

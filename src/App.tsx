@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import SculptureHero from "@/components/ui/liquid-sculpture-hero";
+import { projects } from "@/data/projects";
 
 const email = "mlluizpereira39@gmail.com";
 const whatsapp = "https://wa.me/5511959646307";
@@ -152,20 +153,18 @@ export default function App() {
           <SculptureHero
             className="portfolio-hero"
             showNav={false}
-            src="/sculpture/sculpture-light.webp"
-            darkSrc="/sculpture/sculpture-dark.webp"
-            mobileSrc="/sculpture/sculpture-mobile.webp"
-            mobileDarkSrc="/sculpture/sculpture-mobile-dark.webp"
-            imageAlt="Escultura abstrata de filamentos metálicos e partículas"
-            eyebrow="Software & automação — Brasil / remoto"
+            src={projects[0].cover}
+            imageAlt="Capas dos projetos em destaque"
+            projects={projects}
+            eyebrow="Projetos selecionados — 2026"
             headline={`Software bem feito.
 Rotina mais leve.`}
             headlineAccent="Rotina mais leve."
-            body="Sou Marcelo Luiz. Desenvolvo sistemas e automações para organizar processos, conectar ferramentas e resolver problemas do seu negócio."
+            body="Quatro sistemas que construí de ponta a ponta — da infraestrutura ao atendimento, da produtividade à segurança."
             primaryCta={{ label: "Vamos falar do seu projeto", href: "#contato" }}
             secondaryCta={{ label: "Conheça meu trabalho", href: "#servicos" }}
-            hint="Passe o cursor pela forma"
-            hintTouch="Toque na forma"
+            hint="Passe o cursor pela capa"
+            hintTouch="Toque na capa"
             background="#f7f7f2"
             darkBackground="#0d1210"
             textColor="#252b27"
@@ -176,9 +175,9 @@ Rotina mais leve.`}
             loadFonts={false}
             backdropText=""
             showCredit={false}
-            sculptureScale={0.94}
+            sculptureScale={0.9}
             mobileSculptureScale={0.82}
-            sculptureY={-2}
+            sculptureY={0}
           />
         </div>
 

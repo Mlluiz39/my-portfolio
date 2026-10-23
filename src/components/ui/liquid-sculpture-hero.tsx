@@ -1018,6 +1018,18 @@ export interface SculptureHeroLink {
   href: string
 }
 
+export interface SculptureHeroProject {
+  index?: string
+  name: string
+  short?: string
+  mobileShort?: string
+  category?: string
+  href: string
+  cover: string
+  /** Optional compact cover for narrow screens. */
+  mobileCover?: string
+}
+
 export interface SculptureHeroProps {
   /** Sculpture image (light theme). Must be CORS-enabled when hosted on another domain. */
   src?: string
@@ -1029,6 +1041,8 @@ export interface SculptureHeroProps {
   imageAlt?: string
   /** Only for images without transparency: the flat background colour inside the image. */
   imageBackground?: string
+  /** Project covers shown in the sculpture slot, with an index to switch between them. */
+  projects?: SculptureHeroProject[]
 
   brand?: string
   navLinks?: SculptureHeroLink[]
@@ -1231,7 +1245,26 @@ const CSS = `
 .sh-btn:hover svg,.sh-txt:hover svg{transform:translateX(3px)}
 .sh-txt{display:inline-flex;align-items:center;gap:8px;color:inherit;text-decoration:none;font-size:14.5px;font-weight:500;
   letter-spacing:-.01em;padding:4px 0;border-bottom:1px solid color-mix(in srgb,var(--sh-fg) 30%,transparent)}
-.sh-root a:focus-visible{outline:2px solid var(--sh-fg);outline-offset:4px}
+.sh-root a:focus-visible,.sh-root button:focus-visible{outline:2px solid var(--sh-fg);outline-offset:4px}
+.sh-projects{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:12px clamp(20px,3.2cqw,48px) 16px;border-top:1px solid color-mix(in srgb,var(--sh-fg) 16%,transparent)}
+.sh-project-tabs{display:flex;align-items:center;gap:clamp(14px,2.2cqw,32px);min-width:0;overflow-x:auto;
+  scrollbar-width:none}
+.sh-project-tabs::-webkit-scrollbar{display:none}
+.sh-project-tab{appearance:none;background:none;border:0;padding:5px 0;font:inherit;color:inherit;font-size:13px;
+  letter-spacing:-.01em;display:inline-flex;align-items:baseline;gap:7px;white-space:nowrap;cursor:pointer;opacity:.5;
+  transition:opacity .2s,color .2s;border-bottom:1px solid transparent}
+.sh-project-tab-index{font-family:ui-monospace,SFMono-Regular,monospace;font-size:9.5px;letter-spacing:.08em;opacity:.8}
+.sh-project-tab-name{font-family:inherit;font-size:inherit;letter-spacing:inherit;opacity:1}
+.sh-project-tab-compact{display:none;font-family:inherit;font-size:inherit;letter-spacing:inherit;opacity:1}
+.sh-project-tab:hover{opacity:.85}
+.sh-project-tab[aria-pressed="true"]{opacity:1;color:var(--sh-acc);border-bottom-color:color-mix(in srgb,var(--sh-acc) 45%,transparent)}
+.sh-project-link{display:inline-flex;align-items:center;gap:8px;color:inherit;text-decoration:none;font-size:13px;
+  font-weight:500;white-space:nowrap;opacity:.75;transition:opacity .2s,color .2s}
+.sh-project-link:hover{opacity:1;color:var(--sh-acc)}
+.sh-project-link svg{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.sh-project-link:hover svg{transform:translateX(3px)}
+.sh-project-hint{font-size:12px;letter-spacing:.02em;opacity:.45;white-space:nowrap}
 .sh-credit{position:absolute;z-index:2;right:clamp(20px,3.2cqw,48px);bottom:10px;font-size:10px;letter-spacing:.06em;
   color:inherit;opacity:.38;text-decoration:none}
 .sh-credit:hover{opacity:.8}
@@ -1250,6 +1283,13 @@ const CSS = `
   .sh-eyebrow{font-size:11px}
   .sh-ctas{gap:18px}
   .sh-btn{height:48px}
+  .sh-projects{gap:12px;padding-top:10px;padding-bottom:12px}
+  .sh-project-hint{display:none}
+  .sh-project-tab{font-size:12px}
+  .sh-project-tab-name{display:none}
+  .sh-project-tab-compact{display:inline}
+  .sh-project-link{font-size:0;gap:0}
+  .sh-project-link svg{width:18px;height:18px}
   .sh-content{padding-bottom:40px}
   .sh-credit{right:auto;left:50%;transform:translateX(-50%)}
 }
@@ -1330,6 +1370,7 @@ export default function SculptureHero(props: SculptureHeroProps) {
     mobileDarkSrc = DEFAULTS.mobileDarkSrc,
     imageAlt = DEFAULTS.imageAlt,
     imageBackground,
+    projects,
     brand = DEFAULTS.brand,
     navLinks = DEFAULTS.navLinks,
     navCta = DEFAULTS.navCta,
@@ -1387,7 +1428,11 @@ export default function SculptureHero(props: SculptureHeroProps) {
   const backdropRef = React.useRef<HTMLDivElement>(null)
   const engineRef = React.useRef<LiquidEngine | null>(null)
   const aspectRef = React.useRef(
-    typeof window !== "undefined" && window.innerWidth < 640 ? 1024 / 1300 : 1983 / 793
+    projects && projects.length > 0
+      ? 16 / 9
+      : typeof window !== "undefined" && window.innerWidth < 640
+        ? 1024 / 1300
+        : 1983 / 793
   )
   const [isTouch, setIsTouch] = React.useState(false)
 
@@ -1415,8 +1460,25 @@ export default function SculptureHero(props: SculptureHeroProps) {
     () => typeof window !== "undefined" && window.innerWidth < 640
   )
   const mobileRef = React.useRef(false)
+  const [usePoster, setUsePoster] = React.useState(
+    () => typeof window !== "undefined" && window.innerWidth < 1800
+  )
+  const posterRef = React.useRef(false)
+  const [projectIndex, setProjectIndex] = React.useState(0)
+  const safeIndex =
+    projects && projects.length > 0
+      ? Math.min(projectIndex, projects.length - 1)
+      : 0
+  const activeProject =
+    projects && projects.length > 0 ? projects[safeIndex] : null
+  const projectSrc = activeProject
+    ? usePoster && activeProject.mobileCover
+      ? activeProject.mobileCover
+      : activeProject.cover
+    : null
   // pick the image for the current theme and layout, falling back sensibly
   const activeSrc =
+    projectSrc ||
     (isMobile && mode === "dark" && (mobileDarkSrc || darkSrc)) ||
     (isMobile && mode === "light" && mobileSrc) ||
     (mode === "dark" && darkSrc) ||
@@ -1458,6 +1520,11 @@ export default function SculptureHero(props: SculptureHeroProps) {
     if (mob !== mobileRef.current) {
       mobileRef.current = mob
       setIsMobile(mob)
+    }
+    const poster = w < 1800
+    if (poster !== posterRef.current) {
+      posterRef.current = poster
+      setUsePoster(poster)
     }
     const nav = navRef.current
     const content = contentRef.current
@@ -1700,7 +1767,7 @@ export default function SculptureHero(props: SculptureHeroProps) {
         </nav>
       )}
 
-      {interactive && hintText ? (
+      {interactive && hintText && !(projects && projects.length > 0) ? (
         <div
           ref={hintRef}
           className="sh-hint"
@@ -1736,6 +1803,47 @@ export default function SculptureHero(props: SculptureHeroProps) {
           </div>
         </div>
       </div>
+
+      {projects && projects.length > 0 ? (
+        <div className="sh-projects" role="group" aria-label="Projetos em destaque">
+          <div className="sh-project-tabs" role="group" aria-label="Selecionar projeto">
+            {projects.map((project, i) => (
+              <button
+                key={project.name}
+                type="button"
+                className="sh-project-tab"
+                aria-pressed={i === safeIndex}
+                aria-label={`${project.index ?? String(i + 1).padStart(2, "0")} — ${project.name}`}
+                onClick={() => setProjectIndex(i)}
+              >
+                <span className="sh-project-tab-index">
+                  {project.index ?? String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="sh-project-tab-name">
+                  {project.short ?? project.name}
+                </span>
+                <span className="sh-project-tab-compact">
+                  {project.mobileShort ?? project.short ?? project.name}
+                </span>
+              </button>
+            ))}
+          </div>
+          {hintText ? <span className="sh-project-hint">{hintText}</span> : null}
+          {activeProject ? (
+            <a
+              className="sh-project-link"
+              href={activeProject.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Ver ${activeProject.name} no GitHub (abre em nova aba)`}
+            >
+              Ver projeto
+              <Arrow />
+              <span className="sr-only"> (abre em nova aba)</span>
+            </a>
+          ) : null}
+        </div>
+      ) : null}
 
       {showCredit && (
         <a className="sh-credit" href="https://guglielmogiannattasio.it" target="_blank" rel="noopener">

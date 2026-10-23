@@ -184,6 +184,11 @@ button:focus-visible {
   margin-inline: auto;
   padding-inline: 0;
 }
+.portfolio-hero .sh-projects {
+  width: min(1160px, calc(100% - 96px));
+  margin-inline: auto;
+  padding-inline: 0;
+}
 .portfolio-hero .sh-eyebrow {
   color: var(--green);
   opacity: 1;
@@ -525,6 +530,9 @@ h2 {
   .portfolio-hero .sh-content {
     width: calc(100% - 64px);
   }
+  .portfolio-hero .sh-projects {
+    width: calc(100% - 64px);
+  }
   .process-band-inner {
     grid-template-columns: 1fr;
     gap: 18px;
@@ -596,6 +604,9 @@ h2 {
     min-height: 560px;
   }
   .portfolio-hero .sh-content {
+    width: calc(100% - 40px);
+  }
+  .portfolio-hero .sh-projects {
     width: calc(100% - 40px);
   }
   .process-band-inner {
