@@ -1,5 +1,4 @@
 import {
-  ArrowDown,
   ArrowRight,
   ArrowUpRight,
   Github,
@@ -7,6 +6,7 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import SculptureHero from "@/components/ui/liquid-sculpture-hero";
 
 const email = "mlluizpereira39@gmail.com";
 const whatsapp = "https://wa.me/5511959646307";
@@ -68,7 +68,7 @@ export default function App() {
     );
     document
       .querySelectorAll(
-        ".engineering-note, .section-heading, .service-row, .work-layout > *, .contact-layout > *",
+        ".section-heading, .service-row, .work-layout > *, .contact-layout > *",
       )
       // The first viewport is readable immediately; animate only later sections.
       .forEach((element) => {
@@ -148,77 +148,66 @@ export default function App() {
       </header>
 
       <main id="conteudo">
-        <section
-          className="hero container"
-          id="inicio"
-          aria-labelledby="hero-title"
-        >
-          <div className="hero-topline">
-            <span className="eyebrow">
-              Desenvolvimento de software & automação
-            </span>
-            <span className="location">Brasil / Atendimento remoto</span>
-          </div>
-          <div className="hero-layout">
-            <div className="hero-copy">
-              <h1 id="hero-title">
-                Software bem feito.
-                <br />
-                <span>Rotina mais simples.</span>
-              </h1>
-              <p>
-                Sou Marcelo Luiz. Desenvolvo sistemas e automações para
-                organizar processos, conectar ferramentas e resolver problemas
-                do seu negócio.
-              </p>
-              <a className="button button-primary" href="#contato">
-                Vamos falar do seu projeto{" "}
-                <ArrowUpRight size={19} aria-hidden="true" />
-              </a>
-            </div>
-            <div
-              className="engineering-note"
-              aria-label="Do processo à solução: entender, desenvolver e simplificar"
-            >
-              <div className="note-heading">
-                <span>Da rotina à solução</span>
-                <span aria-hidden="true">↗</span>
-              </div>
-              <div className="flow-step">
-                <span className="flow-index">01</span>
+        <div id="inicio">
+          <SculptureHero
+            className="portfolio-hero"
+            showNav={false}
+            src="/sculpture/sculpture-light.webp"
+            darkSrc="/sculpture/sculpture-dark.webp"
+            mobileSrc="/sculpture/sculpture-mobile.webp"
+            mobileDarkSrc="/sculpture/sculpture-mobile-dark.webp"
+            imageAlt="Escultura abstrata de filamentos metálicos e partículas"
+            eyebrow="Software & automação — Brasil / remoto"
+            headline={`Software bem feito.
+Rotina mais leve.`}
+            headlineAccent="Rotina mais leve."
+            body="Sou Marcelo Luiz. Desenvolvo sistemas e automações para organizar processos, conectar ferramentas e resolver problemas do seu negócio."
+            primaryCta={{ label: "Vamos falar do seu projeto", href: "#contato" }}
+            secondaryCta={{ label: "Conheça meu trabalho", href: "#servicos" }}
+            hint="Passe o cursor pela forma"
+            hintTouch="Toque na forma"
+            background="#f7f7f2"
+            darkBackground="#0d1210"
+            textColor="#252b27"
+            accentColor="#285343"
+            headingFont="'DM Sans', sans-serif"
+            accentFont="'Instrument Serif', 'Times New Roman', serif"
+            bodyFont="'DM Sans', sans-serif"
+            loadFonts={false}
+            backdropText=""
+            showCredit={false}
+            sculptureScale={0.94}
+            mobileSculptureScale={0.82}
+            sculptureY={-2}
+          />
+        </div>
+
+        <section className="process-band" aria-label="Da rotina à solução">
+          <div className="container process-band-inner">
+            <span className="eyebrow">Da rotina à solução</span>
+            <ol className="process-steps">
+              <li className="process-step">
+                <span className="process-step-index">01</span>
                 <div>
                   <strong>Entender o processo</strong>
                   <small>O ponto de partida é o seu dia a dia.</small>
                 </div>
-              </div>
-              <div className="flow-connector" aria-hidden="true" />
-              <div className="flow-step">
-                <span className="flow-index">02</span>
+              </li>
+              <li className="process-step">
+                <span className="process-step-index">02</span>
                 <div>
                   <strong>Construir o sistema</strong>
                   <small>Cada parte com um propósito.</small>
                 </div>
-              </div>
-              <div className="flow-connector" aria-hidden="true" />
-              <div className="flow-step final-step">
-                <span className="flow-index">03</span>
+              </li>
+              <li className="process-step">
+                <span className="process-step-index">03</span>
                 <div>
                   <strong>Simplificar a operação</strong>
                   <small>Mais clareza para seguir em frente.</small>
                 </div>
-              </div>
-              <div className="note-footer">
-                Tecnologia a serviço do trabalho.
-              </div>
-            </div>
-          </div>
-          <div className="hero-bottom">
-            <span>
-              Sistemas web <i>/</i> Automações <i>/</i> Integrações
-            </span>
-            <a href="#servicos">
-              Conheça meu trabalho <ArrowDown size={16} aria-hidden="true" />
-            </a>
+              </li>
+            </ol>
           </div>
         </section>
 

@@ -21,11 +21,13 @@ O build verifica TypeScript e gera o site em `dist/`.
 ## Estrutura ativa
 
 - `src/App.tsx`: apresentação, serviços, GitHub, sobre e contato.
+- `src/components/ui/liquid-sculpture-hero.tsx`: hero com partículas WebGL e fallback estático.
 - `src/index.css`: identidade visual e regras responsivas.
-- `index.html`: metadados, fonte e dados estruturados.
+- `index.html`: metadados, fontes e dados estruturados.
+- `public/sculpture/`: imagens do hero (clara, escura e mobile).
 - `public/llms*.txt`: informações públicas alinhadas ao site.
 
-React 19, TypeScript e Vite. A interface usa rolagem nativa, foco visível, link para pular ao conteúdo e suporte a movimento reduzido. Os componentes e frames da versão anterior não são carregados pela página atual.
+React 19, TypeScript e Vite. A interface usa rolagem nativa, foco visível, link para pular ao conteúdo e suporte a movimento reduzido. O hero carrega a imagem estática primeiro e só então ativa o WebGL; sem WebGL2, a imagem estática permanece. Os componentes e frames da versão anterior não são carregados pela página atual.
 
 ## Conteúdo
 
@@ -49,6 +51,7 @@ HMR e módulos sem minificação; sua nota não representa o site publicado.
 O preview usa uma porta própria e falha se ela estiver ocupada, evitando
 medir outro servidor sem perceber.
 
-A fonte DM Sans é servida pelo próprio site, em WOFF2 variável com preload,
-sem requisições ao Google Fonts. O conteúdo da primeira tela aparece sem
-aguardar animações de entrada; as demais seções mantêm suas animações.
+As fontes DM Sans e Instrument Serif são servidas pelo próprio site, em WOFF2
+com preload, sem requisições ao Google Fonts. O conteúdo da primeira tela
+aparece sem aguardar animações de entrada; as demais seções mantêm suas
+animações.
