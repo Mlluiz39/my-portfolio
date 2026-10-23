@@ -1,4 +1,5 @@
 @import "tailwindcss" source(none);
+@source "./components/ui/tilted-grid-hero.tsx";
 
 @font-face {
   font-family: "DM Sans";
@@ -324,26 +325,26 @@ h2 {
   margin-top: 4px;
 }
 .work-section {
-  background: #e9ede3;
-  padding-block: 80px;
+  background: #0d1210;
+  color: var(--paper);
+  padding-block: 80px 64px;
+  overflow: hidden;
 }
-.work-layout {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 100px;
-  align-items: center;
+.work-section .eyebrow {
+  color: #9fc7b0;
 }
-.work-layout .eyebrow {
-  display: block;
-  color: var(--green);
-  margin-bottom: 24px;
+.work-section .section-heading p {
+  color: #a9b4ab;
 }
-.work-layout p {
-  margin: 24px 0;
-  max-width: 450px;
-  font-size: 15px;
-  line-height: 1.8;
-  color: var(--muted);
+.work-section .text-link {
+  color: var(--paper);
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+.work-section .text-link:hover {
+  color: #9fc7b0;
+}
+.work-repositories {
+  margin-top: 26px;
 }
 .text-link {
   display: inline-flex;
@@ -353,47 +354,102 @@ h2 {
   padding: 10px 0;
   border-bottom: 1px solid var(--green);
 }
-.github-panel {
-  border: 1px solid #cbd3c3;
-  padding: 29px;
-  background: var(--paper);
-  display: flex;
-  min-height: 295px;
-  flex-direction: column;
-  justify-content: space-between;
+.projects-stage {
+  position: relative;
+  isolation: isolate;
+  margin-top: 40px;
 }
-.github-panel:hover {
-  border-color: var(--green);
-  transform: translateY(-3px);
+.projects-stage::before {
+  content: "";
+  position: absolute;
+  inset: -12% 0;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse at 50% 52%,
+    rgba(57, 105, 79, 0.38),
+    transparent 65%
+  );
+  pointer-events: none;
 }
-.github-panel-top,
-.github-panel-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.projects-band {
+  position: relative;
+  width: 100%;
+  height: clamp(330px, 40vw, 540px);
 }
-.github-panel-top > span {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--muted);
-}
-.repository-label {
+.tgh-private {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  z-index: 10;
+  transform: translateX(-50%) translateZ(2px);
+  padding: 4px 7px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(5, 10, 8, 0.72);
+  color: #e7eee8;
   font-family: monospace;
-  font-size: 12px;
-  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
 }
-.github-panel h3 {
-  font-size: 38px;
-  letter-spacing: -1.7px;
-  margin-top: 4px;
+.projects-footer {
+  margin-top: 34px;
 }
-.github-panel-bottom {
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
-  font-size: 11px;
-  color: var(--green);
+.projects-legend {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 22px 0 0;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.projects-legend li {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  min-width: 0;
+}
+.projects-legend-index {
+  font-family: monospace;
+  font-size: 10px;
+  color: #7f9185;
+}
+.projects-legend a,
+.projects-legend-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+.projects-legend a {
+  border-bottom: 1px solid transparent;
+}
+.projects-legend a:hover {
+  color: #9fc7b0;
+  border-bottom-color: rgba(159, 199, 176, 0.5);
+}
+.projects-legend a svg {
+  opacity: 0.55;
+}
+.projects-legend-name {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.projects-legend-name small {
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  color: #8d9a91;
+}
+.projects-note {
+  margin-top: 22px;
+  max-width: 640px;
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: #8d9a91;
 }
 .about .about-intro {
   font-size: 20px;
@@ -523,6 +579,31 @@ h2 {
   white-space: nowrap;
   border: 0;
 }
+@media (max-width: 1180px) {
+  .projects-legend {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 16px;
+  }
+}
+@media (max-width: 1100px) {
+  .portfolio-hero .sh-project-tab-name {
+    display: none;
+  }
+  .portfolio-hero .sh-project-tab-compact {
+    display: inline;
+  }
+  .portfolio-hero .sh-project-hint {
+    display: none;
+  }
+  .portfolio-hero .sh-project-link {
+    font-size: 0;
+    gap: 0;
+  }
+  .portfolio-hero .sh-project-link svg {
+    width: 18px;
+    height: 18px;
+  }
+}
 @media (max-width: 1000px) {
   .container {
     width: calc(100% - 64px);
@@ -539,9 +620,6 @@ h2 {
   }
   .navigation {
     gap: 22px;
-  }
-  .work-layout {
-    gap: 50px;
   }
   .section-heading {
     grid-template-columns: 1fr 2.4fr;
@@ -652,14 +730,19 @@ h2 {
     font-size: 14px;
   }
   .work-section {
-    padding-block: 60px;
+    padding-block: 60px 48px;
   }
-  .work-layout {
-    grid-template-columns: 1fr;
-    gap: 35px;
+  .projects-stage {
+    margin-top: 30px;
   }
-  .github-panel {
-    min-height: 265px;
+  .projects-band {
+    height: clamp(300px, 62vw, 380px);
+  }
+  .projects-legend {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .projects-note {
+    font-size: 11px;
   }
   .about .about-intro {
     font-size: 18px;
@@ -694,21 +777,22 @@ h2 {
     flex-basis: 100%;
   }
 }
+@media (max-width: 520px) {
+  .projects-legend {
+    grid-template-columns: 1fr;
+  }
+}
 /* Motion supports the hierarchy without keeping the page in constant movement. */
 @media (prefers-reduced-motion: no-preference) {
   .button svg,
   .text-link svg,
-  .nav-contact svg,
-  .github-panel-bottom svg {
+  .nav-contact svg {
     transition: transform 220ms ease;
   }
   .button:hover svg,
   .text-link:hover svg,
   .nav-contact:hover svg {
     transform: translate(3px, -3px);
-  }
-  .github-panel:hover .github-panel-bottom svg {
-    transform: translateX(5px);
   }
   .button:active {
     transform: translateY(0) scale(0.98);

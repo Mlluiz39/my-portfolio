@@ -1,13 +1,8 @@
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Github,
-  Menu,
-  X,
-} from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import SculptureHero from "@/components/ui/liquid-sculpture-hero";
-import { projects } from "@/data/projects";
+import TiltedGridHero from "@/components/ui/tilted-grid-hero";
+import { projects, showcaseProjects } from "@/data/projects";
 
 const email = "mlluizpereira39@gmail.com";
 const whatsapp = "https://wa.me/5511959646307";
@@ -69,7 +64,7 @@ export default function App() {
     );
     document
       .querySelectorAll(
-        ".section-heading, .service-row, .work-layout > *, .contact-layout > *",
+        ".section-heading, .service-row, .contact-layout > *",
       )
       // The first viewport is readable immediately; animate only later sections.
       .forEach((element) => {
@@ -253,52 +248,84 @@ Rotina mais leve.`}
           id="portfolio"
           aria-labelledby="work-title"
         >
-          <div className="container work-layout">
-            <div>
-              <span className="eyebrow">02 — Trabalhos & código</span>
-              <h2 id="work-title">
-                O trabalho também
-                <br />
-                está no código.
-              </h2>
-              <p>
-                Meus repositórios públicos estão no GitHub. Por lá, você pode
-                explorar os projetos, acompanhar o desenvolvimento e conhecer
-                minhas escolhas técnicas.
-              </p>
-              <a
-                className="text-link"
-                href={github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Explorar repositórios{" "}
-                <ArrowUpRight size={18} aria-hidden="true" />
-                <span className="sr-only"> (abre em nova aba)</span>
-              </a>
-            </div>
-            <a
-              className="github-panel"
-              href={github}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="github-panel-top">
-                <Github size={30} strokeWidth={1.4} aria-hidden="true" />
-                <span>
-                  Perfil público <ArrowUpRight size={16} aria-hidden="true" />
-                </span>
-              </div>
+          <div className="container">
+            <div className="section-heading">
+              <span className="eyebrow">02 — Trabalhos &amp; código</span>
               <div>
-                <span className="repository-label">github.com/</span>
-                <h3>Mlluiz39</h3>
+                <h2 id="work-title">
+                  O trabalho também
+                  <br />
+                  está no código.
+                </h2>
+                <p>
+                  Projetos que construí de ponta a ponta — da infraestrutura
+                  ao atendimento, da produtividade à segurança. Onde o código
+                  é público, a capa abre o repositório.
+                </p>
+                <a
+                  className="text-link work-repositories"
+                  href={github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ver todos os repositórios{" "}
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                  <span className="sr-only"> (abre em nova aba)</span>
+                </a>
               </div>
-              <div className="github-panel-bottom">
-                <span>Repositórios e desenvolvimento</span>
-                <ArrowRight size={20} aria-hidden="true" />
-              </div>
-              <span className="sr-only">Abrir GitHub em nova aba</span>
-            </a>
+            </div>
+          </div>
+
+          <div className="projects-stage">
+            <TiltedGridHero
+              images={showcaseProjects.map((project) => ({
+                src: project.tile,
+                alt: project.name,
+                href: project.href,
+                private: project.private,
+              }))}
+              speed={5}
+              tileHeight={26}
+              aspectRatio={16 / 9}
+              gap={5}
+              axis={50}
+              curve={72}
+              fade={10}
+              className="projects-band"
+            />
+          </div>
+
+          <div className="container projects-footer">
+            <ul className="projects-legend" aria-label="Projetos">
+              {showcaseProjects.map((project) => (
+                <li key={project.name}>
+                  <span className="projects-legend-index">
+                    {project.index}
+                  </span>
+                  {project.href ? (
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {project.name}
+                      <ArrowUpRight size={13} aria-hidden="true" />
+                      <span className="sr-only"> (abre em nova aba)</span>
+                    </a>
+                  ) : (
+                    <span className="projects-legend-name">
+                      {project.name}
+                      <small>Projeto de empresa · LGPD</small>
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+            <p className="projects-note">
+              Projetos de empresa não podem ter o código compartilhado por
+              confidencialidade e LGPD. As capas permanecem no portfólio como
+              demonstração de escopo e interface.
+            </p>
           </div>
         </section>
 
