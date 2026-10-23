@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Play, Layers, Users, ArrowRight, Sparkles, ExternalLink } from 'lucide-react';
+import { Play, Layers, Users, ArrowRight } from 'lucide-react';
 import { Workstation3DCanvas, BannerSettings } from './Workstation3DCanvas';
 
 interface HeroBannerProps {
@@ -17,7 +17,6 @@ export const CinematicHeroBanner: React.FC<HeroBannerProps> = ({
   showUiOverlay,
   aspectRatioMode,
   onOpenShowreel,
-  onOpenInquiry,
   onNavigateSection,
   onCanvasReady,
 }) => {

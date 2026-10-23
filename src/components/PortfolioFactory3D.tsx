@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
@@ -23,7 +23,6 @@ export default function PortfolioFactory3D({
   className,
   onStationSelect,
   activeStation,
-  onOpenInquiry,
   isPaused = false,
 }: PortfolioFactory3DProps) {
   const rootRef = useRef<HTMLDivElement>(null)

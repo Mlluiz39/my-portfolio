@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Send, CheckCircle2, Sparkles, Code2, Globe, Cpu, ArrowRight } from 'lucide-react';
+import { X, CheckCircle2, Sparkles, Code2, Globe, Cpu, ArrowRight } from 'lucide-react';
 
 interface ProjectInquiryModalProps {
   isOpen: boolean;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Sparkles, ExternalLink, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowUpRight, Sparkles, Zap } from 'lucide-react';
 
 interface PortfolioSectionProps {
   onOpenInquiry: () => void;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import AgenticFactory3D, { type StationId } from './ui/agentic-factory-3d'
-import { Bot, Sparkles, Layers, Terminal } from 'lucide-react'
+import { Bot, Terminal } from 'lucide-react'
 
 interface AgenticFactorySectionProps {
   onOpenInquiry?: () => void

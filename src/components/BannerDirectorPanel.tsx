@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sliders, Eye, EyeOff, Download, Sparkles, Sun, RefreshCw, Zap, Compass } from 'lucide-react';
+import { Sliders, Eye, EyeOff, Download, Sparkles, RefreshCw } from 'lucide-react';
 import { BannerSettings } from './Workstation3DCanvas';
 
 interface BannerDirectorPanelProps {

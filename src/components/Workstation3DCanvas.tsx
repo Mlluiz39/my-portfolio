@@ -435,7 +435,6 @@ export const Workstation3DCanvas: React.FC<WorkstationCanvasProps> = ({
 
       // Keyboard & Trackpad depression on base
       ctx.save();
-      const kbInset = 0.8;
       ctx.beginPath();
       ctx.moveTo(p1.x * 0.75 + p2.x * 0.25, p1.y * 0.75 + p2.y * 0.25 + 10 * scale);
       ctx.lineTo(p1.x * 0.25 + p2.x * 0.75, p1.y * 0.25 + p2.y * 0.75 + 10 * scale);

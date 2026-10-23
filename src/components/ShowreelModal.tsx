@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Play, Pause, Volume2, VolumeX, Maximize2, Sparkles, CheckCircle2 } from 'lucide-react';
+import { X, Play, Pause, Volume2, VolumeX, Maximize2, Sparkles } from 'lucide-react';
 
 interface ShowreelModalProps {
   isOpen: boolean;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 interface NavigationProps {
   onOpenInquiry: () => void;
