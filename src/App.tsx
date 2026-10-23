@@ -9,6 +9,7 @@ import {
 import { useEffect, useState } from "react";
 
 const email = "mlluizpereira39@gmail.com";
+const whatsapp = "https://wa.me/5511959646307";
 const github = "https://github.com/Mlluiz39";
 const services = [
   {
@@ -364,6 +365,16 @@ export default function App() {
             <div className="contact-action">
               <a
                 className="button button-light"
+                href={whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Conversar pelo WhatsApp
+                <ArrowUpRight size={19} aria-hidden="true" />
+                <span className="sr-only"> (11) 95964-6307 — abre em nova aba</span>
+              </a>
+              <a
+                className="button button-outline"
                 href={`mailto:${email}?subject=Vamos%20conversar%20sobre%20um%20projeto`}
               >
                 Conversar por e-mail{" "}

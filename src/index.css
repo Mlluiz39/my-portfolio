@@ -476,6 +476,13 @@ h2 {
   background: var(--paper);
   color: #254a3b;
 }
+.button-outline {
+  border: 1px solid #a8beaf;
+  color: var(--paper);
+}
+.button-outline:hover {
+  background: #345d4b;
+}
 .button-light:hover {
   background: #dce5d7;
   transform: translateY(-2px);

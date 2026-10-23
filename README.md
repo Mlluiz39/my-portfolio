@@ -1,6 +1,6 @@
 # mlluizdevtech — Portfólio
 
-Site de Marcelo Luiz com foco em sistemas, automações e integrações. Interface editorial clara, navegação responsiva e contato direto por e-mail.
+Site de Marcelo Luiz com foco em sistemas, automações e integrações. Interface editorial clara, navegação responsiva e contato direto por WhatsApp e e-mail.
 
 ## Desenvolvimento
 
@@ -29,7 +29,7 @@ React 19, TypeScript e Vite. A interface usa rolagem nativa, foco visível, link
 
 ## Conteúdo
 
-Os antigos AgroTrack, Krypton Pay, OmniLog e ClinicOS eram exemplos e não são apresentados como trabalhos reais. A seção de trabalhos aponta para o GitHub público. O contato usa `mailto:`, sem simular envio de formulário nem usar telefone fictício.
+Os antigos AgroTrack, Krypton Pay, OmniLog e ClinicOS eram exemplos e não são apresentados como trabalhos reais. A seção de trabalhos aponta para o GitHub público. O contato usa WhatsApp no número (11) 95964-6307 e `mailto:`, sem simular envio de formulário.
 
 - GitHub: https://github.com/Mlluiz39
 - E-mail: mlluizpereira39@gmail.com
