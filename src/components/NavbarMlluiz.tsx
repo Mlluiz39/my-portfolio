@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, MessageSquare, Terminal } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 interface NavbarMlluizProps {
   onOpenInquiry: () => void;
@@ -37,14 +37,18 @@ export const NavbarMlluiz: React.FC<NavbarMlluizProps> = ({
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#03050a]/95 border-b border-white/10 py-3.5 shadow-2xl shadow-black/80'
+          ? 'bg-[#03050a]/90 backdrop-blur-xl border-b border-white/10 py-3.5 shadow-2xl shadow-black/80'
           : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-12 flex items-center justify-between">
         {/* Brand Logo */}
-        <button
-          onClick={() => onNavigate('hero')}
+        <a
+          href="#hero"
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate('hero');
+          }}
           className="flex items-center gap-3 text-left group"
         >
           <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500/20 via-orange-600/20 to-black border border-amber-500/40 group-hover:border-amber-400 transition-all shadow-[0_0_15px_rgba(255,140,40,0.2)]">
@@ -59,14 +63,18 @@ export const NavbarMlluiz: React.FC<NavbarMlluizProps> = ({
               SOFTWARE HOUSE & IA
             </span>
           </div>
-        </button>
+        </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-7 px-6 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
           {navItems.map((item) => (
-            <button
+            <a
               key={item.id}
-              onClick={() => onNavigate(item.id)}
+              href={`#${item.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate(item.id);
+              }}
               className={`font-mono text-xs uppercase tracking-wider transition-all relative py-1 ${
                 activeSection === item.id
                   ? 'text-white font-bold'
@@ -77,7 +85,7 @@ export const NavbarMlluiz: React.FC<NavbarMlluizProps> = ({
               {activeSection === item.id && (
                 <span className="absolute -bottom-1 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent" />
               )}
-            </button>
+            </a>
           ))}
         </nav>
 
@@ -114,16 +122,18 @@ export const NavbarMlluiz: React.FC<NavbarMlluizProps> = ({
         <div className="lg:hidden fixed inset-x-4 top-20 bg-[#060a14]/95 backdrop-blur-2xl border border-amber-500/30 rounded-3xl p-6 shadow-2xl z-50 animate-in fade-in slide-in-from-top-4">
           <div className="flex flex-col gap-3">
             {navItems.map((item) => (
-              <button
+              <a
                 key={item.id}
-                onClick={() => {
+                href={`#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
                   onNavigate(item.id);
                   setMobileMenuOpen(false);
                 }}
                 className="text-left font-mono text-sm tracking-wider text-zinc-300 hover:text-amber-400 py-2.5 border-b border-white/5"
               >
                 {item.label}
-              </button>
+              </a>
             ))}
             <button
               onClick={() => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Mail, MessageCircle, MapPin, Sparkles, Terminal } from 'lucide-react';
+import { ArrowUp, Mail, MessageCircle, MapPin, Sparkles } from 'lucide-react';
 
 interface FooterMlluizProps {
   onOpenInquiry: () => void;
@@ -17,19 +17,26 @@ export const FooterMlluiz: React.FC<FooterMlluizProps> = ({ onOpenInquiry, onNav
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           {/* Brand Info & Mission */}
           <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500/20 via-orange-600/20 to-black border border-amber-500/40">
+            <a
+              href="#hero"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('hero');
+              }}
+              className="flex items-center gap-3 group text-left cursor-pointer"
+            >
+              <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500/20 via-orange-600/20 to-black border border-amber-500/40 group-hover:border-amber-400 transition-colors">
                 <span className="font-mono font-black text-sm text-amber-400">ML</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-['Syne',sans-serif] text-base font-extrabold tracking-tight text-white">
+                <span className="font-['Syne',sans-serif] text-base font-extrabold tracking-tight text-white group-hover:text-amber-200 transition-colors">
                   mlluiz<span className="text-amber-400">devtech</span>
                 </span>
                 <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-400">
                   SOFTWARE HOUSE & SOLUÇÕES COM IA
                 </span>
               </div>
-            </div>
+            </a>
 
             <p className="font-['Plus_Jakarta_Sans',sans-serif] text-zinc-400 text-sm max-w-sm leading-relaxed">
               Software que transforma ideias em negócios digitais. Engenharia de software personalizada, aplicativos mobile, SaaS e automações inteligentes.
@@ -50,34 +57,76 @@ export const FooterMlluiz: React.FC<FooterMlluizProps> = ({ onOpenInquiry, onNav
             </span>
             <ul className="space-y-2 text-xs font-mono text-zinc-400">
               <li>
-                <button onClick={() => onNavigate('services')} className="hover:text-amber-400 transition-colors">
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
+                  className="hover:text-amber-400 transition-colors inline-block py-0.5"
+                >
                   Websites & Sistemas Web
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate('services')} className="hover:text-amber-400 transition-colors">
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
+                  className="hover:text-amber-400 transition-colors inline-block py-0.5"
+                >
                   Aplicativos Mobile (iOS/Android)
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate('services')} className="hover:text-amber-400 transition-colors">
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
+                  className="hover:text-amber-400 transition-colors inline-block py-0.5"
+                >
                   IA & Automação de Processos
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate('services')} className="hover:text-amber-400 transition-colors">
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
+                  className="hover:text-amber-400 transition-colors inline-block py-0.5"
+                >
                   APIs & Integrações de Sistemas
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate('services')} className="hover:text-amber-400 transition-colors">
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
+                  className="hover:text-amber-400 transition-colors inline-block py-0.5"
+                >
                   SaaS sob medida
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate('services')} className="hover:text-amber-400 transition-colors">
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('services');
+                  }}
+                  className="hover:text-amber-400 transition-colors inline-block py-0.5"
+                >
                   Evolução Contínua & Suporte
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -90,15 +139,15 @@ export const FooterMlluiz: React.FC<FooterMlluizProps> = ({ onOpenInquiry, onNav
             
             <div className="space-y-2.5 text-xs font-mono">
               <a
-                href="mailto:contato@mlluizdevtech.com.br"
+                href="mailto:mlluizpereira39@gmail.com"
                 className="flex items-center gap-2.5 text-zinc-300 hover:text-amber-400 transition-colors"
               >
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>contato@mlluizdevtech.com.br</span>
+                <span>mlluizpereira39@gmail.com</span>
               </a>
 
               <a
-                href="https://wa.me/5511959646307?text=Ol%C3%A1%20mlluizdevtech!%20Gostaria%20de%20conversar%20sobre%20um%20projeto."
+                href="https://wa.me/5511999999999?text=Ol%C3%A1%20mlluizdevtech!%20Gostaria%20de%20conversar%20sobre%20um%20projeto."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-zinc-300 hover:text-emerald-400 transition-colors"
@@ -136,6 +185,7 @@ export const FooterMlluiz: React.FC<FooterMlluizProps> = ({ onOpenInquiry, onNav
             <span className="hover:text-zinc-300 cursor-pointer">Segurança & LGPD</span>
             <button
               onClick={scrollToTop}
+              aria-label="Voltar ao topo"
               className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
               title="Voltar ao topo"
             >

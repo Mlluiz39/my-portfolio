@@ -68,7 +68,7 @@ export const AICoreSection: React.FC<AICoreSectionProps> = ({ onOpenInquiry }) =
             <Sparkles className="w-3.5 h-3.5" />
             Engenharia Orientada a Multiplicação
           </div>
-          <h2 className="font-['Syne',sans-serif] text-[clamp(1.5rem,7vw,2.25rem)] sm:text-4xl lg:text-5xl font-bold lg:font-extrabold text-white tracking-tight">
+          <h2 className="font-['Syne',sans-serif] text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
             IA NÃO É O PRODUTO.
             <br />
             <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">
@@ -81,7 +81,7 @@ export const AICoreSection: React.FC<AICoreSectionProps> = ({ onOpenInquiry }) =
         </div>
 
         {/* The Central Glowing Digital Core Interactive Diagram */}
-        <div className="relative max-w-4xl mx-auto rounded-3xl bg-black/75 border border-amber-500/30 overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+        <div className="relative max-w-4xl mx-auto rounded-3xl bg-black/60 backdrop-blur-xl border border-amber-500/30 overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
           {/* Top Label */}
           <div className="relative z-10 flex items-center justify-between flex-wrap gap-2 mb-6">
             <span className="font-mono text-xs uppercase tracking-wider text-amber-400 font-semibold">
@@ -133,7 +133,7 @@ export const AICoreSection: React.FC<AICoreSectionProps> = ({ onOpenInquiry }) =
         {(() => {
           const current = nodes[activeNode];
           return (
-            <div className="mt-8 max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-black/80 border border-amber-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl">
+            <div className="mt-8 max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-black/70 backdrop-blur-xl border border-amber-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl">
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs font-bold uppercase">

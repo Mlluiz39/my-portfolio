@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { prefersReducedMotion } from '../hooks/useSmoothScroll';
 
 interface FadeInSectionProps {
   children: React.ReactNode;
@@ -12,11 +13,12 @@ export const FadeInSection: React.FC<FadeInSectionProps> = ({
   delay = 0,
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(() => prefersReducedMotion());
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (prefersReducedMotion()) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {

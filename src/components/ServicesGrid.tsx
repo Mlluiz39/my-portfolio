@@ -106,7 +106,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onOpenInquiry }) => 
   ];
 
   return (
-    <section id="services" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-black/60 border-t border-white/5">
+    <section id="services" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-black/60 backdrop-blur-[2px] border-t border-white/5">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
 
@@ -118,7 +118,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onOpenInquiry }) => 
               <Sparkles className="w-3.5 h-3.5" />
               Especialidades de Engenharia
             </div>
-            <h2 className="font-['Syne',sans-serif] text-[clamp(1.5rem,7vw,2.25rem)] sm:text-4xl lg:text-6xl font-bold lg:font-extrabold text-white tracking-tight">
+            <h2 className="font-['Syne',sans-serif] text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
               DO CONCEITO
               <br />
               <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">

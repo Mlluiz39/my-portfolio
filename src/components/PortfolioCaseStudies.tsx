@@ -1,16 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  ArrowUpRight, 
-  Sparkles, 
-  ExternalLink, 
-  ShieldCheck, 
-  CheckCircle2, 
-  TrendingUp, 
-  Layers, 
-  Terminal,
-  Activity,
-  Zap
-} from 'lucide-react';
+import { ArrowUpRight, Sparkles, Activity } from 'lucide-react';
 
 interface PortfolioCaseStudiesProps {
   onOpenInquiry: () => void;
@@ -103,7 +92,7 @@ export const PortfolioCaseStudies: React.FC<PortfolioCaseStudiesProps> = ({ onOp
   ];
 
   return (
-    <section id="portfolio" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-black/60 border-t border-white/5">
+    <section id="portfolio" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-black/60 backdrop-blur-[2px] border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-white/10">
@@ -112,7 +101,7 @@ export const PortfolioCaseStudies: React.FC<PortfolioCaseStudiesProps> = ({ onOp
               <Sparkles className="w-3.5 h-3.5" />
               Cases de Sucesso • mlluizdevtech
             </div>
-            <h2 className="font-['Syne',sans-serif] text-[clamp(1.5rem,7vw,2.25rem)] sm:text-4xl lg:text-6xl font-bold lg:font-extrabold text-white tracking-tight">
+            <h2 className="font-['Syne',sans-serif] text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
               PROJETOS QUE
               <br />
               <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">
@@ -148,15 +137,15 @@ export const PortfolioCaseStudies: React.FC<PortfolioCaseStudiesProps> = ({ onOp
           return (
             <div className="rounded-3xl bg-[#060a15] border border-amber-500/30 overflow-hidden shadow-2xl">
               {/* Top Banner with Title & Key Metric */}
-              <div className="p-5 sm:p-10 border-b border-white/10 bg-gradient-to-r from-amber-500/10 via-transparent to-transparent flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+              <div className="p-8 sm:p-10 border-b border-white/10 bg-gradient-to-r from-amber-500/10 via-transparent to-transparent flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div>
-                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                  <div className="flex items-center gap-3 mb-2">
                     <span className="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-xs font-semibold">
                       {current.category}
                     </span>
                     <span className="font-mono text-xs text-zinc-400">CASE STUDY #{current.id}</span>
                   </div>
-                  <h3 className="font-['Syne',sans-serif] text-2xl sm:text-4xl font-bold sm:font-extrabold text-white">
+                  <h3 className="font-['Syne',sans-serif] text-3xl sm:text-4xl font-extrabold text-white">
                     {current.title}
                   </h3>
                   <p className="text-zinc-300 text-sm sm:text-base mt-1 font-light max-w-2xl">

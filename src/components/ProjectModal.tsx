@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Send, CheckCircle2, MessageCircle, Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
+import { X, CheckCircle2, MessageCircle, ArrowRight, ShieldCheck } from 'lucide-react';
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -49,7 +49,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ isOpen, onClose }) =
       `*Prazo desejado:* ${formData.timeline}\n` +
       `*Detalhes:* ${formData.message || 'Gostaria de agendar uma conversa inicial.'}`
     );
-    window.open(`https://wa.me/5511959646307?text=${text}`, '_blank');
+    window.open(`https://wa.me/5511999999999?text=${text}`, '_blank');
   };
 
   return (

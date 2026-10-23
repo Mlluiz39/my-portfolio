@@ -1,0 +1,24 @@
+# mlluizdevtech
+
+Desenvolvimento de sistemas e automações por Marcelo Luiz, no Brasil.
+
+## Serviços
+
+- Sistemas sob medida: aplicações web, plataformas SaaS e ferramentas internas.
+- Automação de processos: integração de ferramentas e fluxos, com IA quando adequada ao problema.
+- Integrações e evolução: APIs e melhorias em sistemas existentes.
+
+## Tecnologias
+
+TypeScript, React, Node.js, Python e PostgreSQL.
+
+## Trabalhos
+
+Repositórios públicos: https://github.com/Mlluiz39
+
+## Contato
+
+- Marcelo Luiz
+- E-mail: mlluizpereira39@gmail.com
+- Site: https://mlluizdevtech.com.br
+- Brasil / Atendimento remoto

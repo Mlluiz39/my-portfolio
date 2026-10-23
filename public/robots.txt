@@ -1,0 +1,38 @@
+# robots.txt — mlluizdevtech portfolio
+# Permite crawlers tradicionais e de IA
+
+User-agent: *
+Allow: /
+
+# Crawlers de IA explicitamente permitidos
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Anthropic
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Referência ao llms.txt para agentes de IA
+# Especificação: https://llmstxt.org
+# llms.txt: /llms.txt
+# llms-full.txt: /llms-full.txt
+
+# TODO: trocar dominio se diferir de mlluizdevtech.com.br
+Sitemap: https://mlluizdevtech.com.br/sitemap.xml
