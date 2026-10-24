@@ -157,7 +157,7 @@ Rotina mais leve.`}
             headlineAccent="Rotina mais leve."
             body="Quatro sistemas que construí de ponta a ponta — da infraestrutura ao atendimento, da produtividade à segurança."
             primaryCta={{ label: "Vamos falar do seu projeto", href: "#contato" }}
-            secondaryCta={{ label: "Conheça meu trabalho", href: "#servicos" }}
+            secondaryCta={{ label: "Conheça meu trabalho", href: "https://servicos.mlluizdevtech.com.br" }}
             hint="Passe o cursor pela capa"
             hintTouch="Toque na capa"
             background="#f7f7f2"
